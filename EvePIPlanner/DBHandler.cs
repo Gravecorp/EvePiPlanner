@@ -75,6 +75,28 @@ namespace EvePIPlanner
             return (ret);
         }
 
+        public List<Planet> GetAllPlanetObjects()
+        {
+            List<Planet> ret = new List<Planet>();
+            using (SQLiteCommand comm = connection.CreateCommand())
+            {
+                comm.CommandText = DBConstants.PLANET_GET_ALL_PREPARED_STATEMENT_STRING;
+                SQLiteDataReader reader = comm.ExecuteReader();
+                while (reader.Read())
+                {
+                    int idColumn = reader.GetOrdinal(DBConstants.ID_FIELD);
+                    int nameColumn = reader.GetOrdinal(DBConstants.NAME_FIELD);
+                    int idValue = (reader.IsDBNull(idColumn)) ? -1 : reader.GetInt32(idColumn);
+                    string nameValue = (reader.IsDBNull(nameColumn)) ? string.Empty : reader.GetString(nameColumn);
+                    Planet obj = new Planet(idValue, nameValue, PIObject.ObjectType.Planet);
+                    ret.Add(obj);
+                }
+                reader.Close();
+                reader = null;
+            }
+            return (ret);
+        }
+
         public List<Planet> GetPlanetsFromRawPIID(int id)
         {
             List<Planet> ret = new List<Planet>();
@@ -142,6 +164,28 @@ namespace EvePIPlanner
             return (ret);
         }
 
+        public List<RawPIObject> GetAllRawPIObjects()
+        {
+            List<RawPIObject> ret = new List<RawPIObject>();
+            using (SQLiteCommand comm = connection.CreateCommand())
+            {
+                comm.CommandText = DBConstants.RAW_PI_GET_ALL_PREPARED_STATEMENT_STRING;
+                SQLiteDataReader reader = comm.ExecuteReader();
+                while (reader.Read())
+                {
+                    int idColumn = reader.GetOrdinal(DBConstants.ID_FIELD);
+                    int nameColumn = reader.GetOrdinal(DBConstants.NAME_FIELD);
+                    int idValue = (reader.IsDBNull(idColumn)) ? -1 : reader.GetInt32(idColumn);
+                    string nameValue = (reader.IsDBNull(nameColumn)) ? string.Empty : reader.GetString(nameColumn);
+                    RawPIObject obj = new RawPIObject(idValue, nameValue, PIObject.ObjectType.Raw);
+                    ret.Add(obj);
+                }
+                reader.Close();
+                reader = null;
+            }
+            return (ret);
+        }
+
         public P1Object GetP1ByName(string name)
         {
             P1Object ret = null;
@@ -181,6 +225,28 @@ namespace EvePIPlanner
                     string nameValue = (reader.IsDBNull(nameColumn)) ? string.Empty : reader.GetString(nameColumn);
                     ret = new P1Object(idValue, nameValue, PIObject.ObjectType.P1);
                     break;
+                }
+                reader.Close();
+                reader = null;
+            }
+            return (ret);
+        }
+
+        public List<P1Object> GetAllP1Objects()
+        {
+            List<P1Object> ret = new List<P1Object>();
+            using (SQLiteCommand comm = connection.CreateCommand())
+            {
+                comm.CommandText = DBConstants.P1_GET_ALL_PREPARED_STATEMENT_STRING;
+                SQLiteDataReader reader = comm.ExecuteReader();
+                while (reader.Read())
+                {
+                    int idColumn = reader.GetOrdinal(DBConstants.ID_FIELD);
+                    int nameColumn = reader.GetOrdinal(DBConstants.NAME_FIELD);
+                    int idValue = (reader.IsDBNull(idColumn)) ? -1 : reader.GetInt32(idColumn);
+                    string nameValue = (reader.IsDBNull(nameColumn)) ? string.Empty : reader.GetString(nameColumn);
+                    P1Object obj = new P1Object(idValue, nameValue, PIObject.ObjectType.P1);
+                    ret.Add(obj);
                 }
                 reader.Close();
                 reader = null;
@@ -255,6 +321,28 @@ namespace EvePIPlanner
             return (ret);
         }
 
+        public List<P2Object> GetAllP2Objects()
+        {
+            List<P2Object> ret = new List<P2Object>();
+            using (SQLiteCommand comm = connection.CreateCommand())
+            {
+                comm.CommandText = DBConstants.P2_GET_ALL_PREPARED_STATEMENT_STRING;
+                SQLiteDataReader reader = comm.ExecuteReader();
+                while (reader.Read())
+                {
+                    int idColumn = reader.GetOrdinal(DBConstants.ID_FIELD);
+                    int nameColumn = reader.GetOrdinal(DBConstants.NAME_FIELD);
+                    int idValue = (reader.IsDBNull(idColumn)) ? -1 : reader.GetInt32(idColumn);
+                    string nameValue = (reader.IsDBNull(nameColumn)) ? string.Empty : reader.GetString(nameColumn);
+                    P2Object obj = new P2Object(idValue, nameValue, PIObject.ObjectType.P2);
+                    ret.Add(obj);
+                }
+                reader.Close();
+                reader = null;
+            }
+            return (ret);
+        }
+
         public List<P1Object> GetP1ComponentsByP2ID(int id)
         {
             List<P1Object> ret = new List<P1Object>();
@@ -322,6 +410,28 @@ namespace EvePIPlanner
             return (ret);
         }
 
+        public List<P3Object> GetAllP3Objects()
+        {
+            List<P3Object> ret = new List<P3Object>();
+            using (SQLiteCommand comm = connection.CreateCommand())
+            {
+                comm.CommandText = DBConstants.P3_GET_ALL_PREPARED_STATEMENT_STRING;
+                SQLiteDataReader reader = comm.ExecuteReader();
+                while (reader.Read())
+                {
+                    int idColumn = reader.GetOrdinal(DBConstants.ID_FIELD);
+                    int nameColumn = reader.GetOrdinal(DBConstants.NAME_FIELD);
+                    int idValue = (reader.IsDBNull(idColumn)) ? -1 : reader.GetInt32(idColumn);
+                    string nameValue = (reader.IsDBNull(nameColumn)) ? string.Empty : reader.GetString(nameColumn);
+                    P3Object obj = new P3Object(idValue, nameValue, PIObject.ObjectType.P3);
+                    ret.Add(obj);
+                }
+                reader.Close();
+                reader = null;
+            }
+            return (ret);
+        }
+
         public List<P2Object> GetP2ComponentsByP3ID(int id)
         {
             List<P2Object> ret = new List<P2Object>();
@@ -382,6 +492,28 @@ namespace EvePIPlanner
                     string nameValue = (reader.IsDBNull(nameColumn)) ? string.Empty : reader.GetString(nameColumn);
                     ret = new P4Object(idValue, nameValue, PIObject.ObjectType.P4);
                     break;
+                }
+                reader.Close();
+                reader = null;
+            }
+            return (ret);
+        }
+
+        public List<P4Object> GetAllP4Objects()
+        {
+            List<P4Object> ret = new List<P4Object>();
+            using (SQLiteCommand comm = connection.CreateCommand())
+            {
+                comm.CommandText = DBConstants.P4_GET_ALL_PREPARED_STATEMENT_STRING;
+                SQLiteDataReader reader = comm.ExecuteReader();
+                while (reader.Read())
+                {
+                    int idColumn = reader.GetOrdinal(DBConstants.ID_FIELD);
+                    int nameColumn = reader.GetOrdinal(DBConstants.NAME_FIELD);
+                    int idValue = (reader.IsDBNull(idColumn)) ? -1 : reader.GetInt32(idColumn);
+                    string nameValue = (reader.IsDBNull(nameColumn)) ? string.Empty : reader.GetString(nameColumn);
+                    P4Object obj = new P4Object(idValue, nameValue, PIObject.ObjectType.P4);
+                    ret.Add(obj);
                 }
                 reader.Close();
                 reader = null;
