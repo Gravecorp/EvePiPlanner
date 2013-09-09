@@ -11,6 +11,7 @@ namespace EvePIPlanner
         public int Id = -1;
         public string Name = string.Empty;
         public PIObject.ObjectType Type = null;
+        internal List<PIObject> objectList = new List<PIObject>();
 
         public virtual List<PIObject> GetComponents()
         {

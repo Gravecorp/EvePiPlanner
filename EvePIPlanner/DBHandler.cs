@@ -104,6 +104,7 @@ namespace EvePIPlanner
             {
                 comm.CommandText = DBConstants.RAW_PI_GET_PLANETS_BY_ID_PREPARED_STATEMENT_STRING;
                 comm.Parameters.AddWithValue("@id", id);
+                comm.Prepare();
                 SQLiteDataReader reader = comm.ExecuteReader();
                 while (reader.Read())
                 {
@@ -261,6 +262,7 @@ namespace EvePIPlanner
             {
                 comm.CommandText = DBConstants.P1_GET_RAW_COMPONENTS_BY_ID_PREPARED_STATEMENT_STRING;
                 comm.Parameters.AddWithValue("@id", id);
+                comm.Prepare();
                 SQLiteDataReader reader = comm.ExecuteReader();
                 while (reader.Read())
                 {
@@ -350,6 +352,7 @@ namespace EvePIPlanner
             {
                 comm.CommandText = DBConstants.P2_GET_P1_COMPONENTS_BY_ID_PREPARED_STATEMENT_STRING;
                 comm.Parameters.AddWithValue("@id", id);
+                comm.Prepare();
                 SQLiteDataReader reader = comm.ExecuteReader();
                 while (reader.Read())
                 {
@@ -439,6 +442,7 @@ namespace EvePIPlanner
             {
                 comm.CommandText = DBConstants.P3_GET_P2_COMPONENTS_BY_ID_PREPARED_STATEMENT_STRING;
                 comm.Parameters.AddWithValue("@id", id);
+                comm.Prepare();
                 SQLiteDataReader reader = comm.ExecuteReader();
                 while (reader.Read())
                 {
@@ -536,6 +540,7 @@ namespace EvePIPlanner
             {
                 comm.CommandText = DBConstants.P4_GET_P1_COMPONENTS_BY_ID_PREPARED_STATEMENT_STRING;
                 comm.Parameters.AddWithValue("@id", id);
+                comm.Prepare();
                 SQLiteDataReader reader = comm.ExecuteReader();
                 while (reader.Read())
                 {
@@ -557,6 +562,7 @@ namespace EvePIPlanner
             {
                 comm.CommandText = DBConstants.P4_GET_P3_COMPONENTS_BY_ID_PREPARED_STATEMENT_STRING;
                 comm.Parameters.AddWithValue("@id", id);
+                comm.Prepare();
                 SQLiteDataReader reader = comm.ExecuteReader();
                 while (reader.Read())
                 {

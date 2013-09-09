@@ -13,12 +13,13 @@ namespace EvePIPlanner
             Id = id;
             Name = name;
             Type = type;
+            objectList.AddRange(DBHandler.GetInstance().GetPIComponentsByP4ID(id));
         }
 
 
         public override List<PIObject> GetComponents()
         {
-            return DBHandler.GetInstance().GetPIComponentsByP4ID(Id);
+            return (objectList);
         }
     }
 }
